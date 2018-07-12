@@ -1,0 +1,66 @@
+import java.awt.*;
+import java.applet.*;
+import java.awt.event.*;
+public class Exercise48 extends Applet implements MouseListener,MouseMotionListener
+{
+	String msg = "";
+	int mouseX = 0, mouseY = 0;
+	public void init()
+	{
+		addMouseListener(this);
+		addMouseMotionListener(this);
+	}
+	public void mouseClicked(MouseEvent ae)
+	{
+		mouseX=0;
+		mouseY=10;
+		msg="Mouse clicked";
+		repaint();
+	} 
+	public void mouseEntered(MouseEvent ae)
+	{
+		mouseX=0;
+		mouseY=10;
+		msg="Mouse entered";
+		repaint();
+	} 
+	public void mouseExited(MouseEvent ae)
+	{
+		mouseX=0;
+		mouseY=10;
+		msg="Mouse exit";
+		repaint();
+	} 
+	public void mousePressed(MouseEvent ae)
+	{
+		mouseX=ae.getX();
+		mouseY=ae.getY();
+		msg="down";
+		repaint();
+	}
+	public void mouseReleased(MouseEvent ae)
+	{
+		mouseX=ae.getX();
+		mouseY=ae.getY();
+		msg="up";
+		repaint();
+	}
+	public void mouseDragged(MouseEvent ae)
+	{
+		mouseX=ae.getX();
+		mouseY=ae.getY();
+		msg="*";
+		showStatus("moving mouse at"+mouseX+","+mouseY);
+		repaint();
+		
+	}
+	public void mouseMoved(MouseEvent ae)
+	{
+		
+		showStatus("moving mouse at"+ae.getX()+","+ae.getY());
+	}
+	public void paint(Graphics g)
+	{
+		g.drawString(msg,mouseX,mouseY);
+	}
+}
